@@ -6,8 +6,8 @@ export const ProductDescription = ({
 }: ProductDescriptionType) => {
 	return (
 		<>
-      <p className="text-2xl uppercase">{name}</p>
-      <p className="text-right text-sm font-bold">{price}</p>
+			<h4 className="text-2xl uppercase">{name}</h4>
+			<p className="text-right text-sm font-bold">{price}</p>
 		</>
 	);
 };
