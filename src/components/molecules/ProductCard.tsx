@@ -1,14 +1,19 @@
+import Link from "next/link";
 import { ProductImage } from "../atoms/ProductImage";
 import { ProductDescription } from "../atoms/ProductDescription";
-import { type ProductType } from "../types";
+import { type ProductItemType } from "../types";
 
-export const ProductCard = ({ image, name, price }: ProductType) => {
+export const ProductCard = (product: ProductItemType) => {
+	const { coverImage } = product;
+
 	return (
 		<li>
-			<article className="mx-auto max-w-80 p-1">
-				<ProductImage image={image} name={name} />
-				<ProductDescription name={name} price={price} />
-			</article>
+			<Link href={`/product/${product.id}`}>
+				<article className="mx-auto max-w-80 p-1">
+					<ProductImage coverImage={coverImage} />
+					<ProductDescription {...product} />
+				</article>
+			</Link>
 		</li>
 	);
 };

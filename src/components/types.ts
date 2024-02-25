@@ -5,7 +5,20 @@ export type ProductType = {
 	image: string;
 };
 
-export type ProductImageType = Pick<ProductType, "image" | "name">;
+export type ProductItemType = {
+	id: string;
+	name: string;
+	price: number;
+	category: string;
+	description: string;
+	coverImage: {
+		alt: string;
+		src: string;
+	};
+};
+
+export type ProductImageType = Pick<ProductItemType, "coverImage">;
+
 export type ProductDescriptionType = Pick<
 	ProductType,
 	"name" | "price"
