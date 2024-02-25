@@ -1,10 +1,10 @@
 import { ProductCard } from "../molecules/ProductCard";
-import { type ProductType } from "../types";
+import { type ProductItemType } from "../types";
 
 export const ProductList = ({
 	products,
 }: {
-	products: ProductType[];
+	products: ProductItemType[];
 }) => {
 	return (
 		<ul
