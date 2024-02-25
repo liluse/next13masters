@@ -1,17 +1,8 @@
 import { Suspense } from "react";
 import { type Metadata } from "next";
-import { getProductById, getProductsList } from "@/api/products";
-import { ProductDescription } from "@/components/atoms/ProductDescription";
-import { ProductImage } from "@/components/atoms/ProductImage";
+import { getProductById } from "@/api/products";
 import { SuggestedProductsList } from "@/components/organisms/SuggestedProducts";
-
-export const generateStaticParams = async () => {
-	const products = await getProductsList();
-
-	return products.map((product) => ({
-		productId: product.id,
-	}));
-};
+import { ProductPresentation } from "@/components/molecules/ProductPresentation";
 
 export const generateMetadata = async ({
 	params,
@@ -48,9 +39,8 @@ export default async function SingleProductPage({
 
 	return (
 		<>
-			<article className="mx-auto max-w-80 p-1">
-				<ProductImage coverImage={product.coverImage} />
-				<ProductDescription {...product} />
+			<article className="mx-auto p-1">
+				<ProductPresentation {...product} />
 			</article>
 			<aside>
 				<Suspense fallback="Ładowanie...">

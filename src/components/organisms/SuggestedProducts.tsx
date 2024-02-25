@@ -5,7 +5,7 @@ const sleep = (ms: number) =>
 	new Promise((res) => setTimeout(res, ms));
 
 export const SuggestedProductsList = async ({}) => {
-	const products = await getProductsList();
+	const products = await getProductsList(1);
 
 	await sleep(2000);
 
