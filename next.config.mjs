@@ -5,7 +5,7 @@ import withMDX from '@next/mdx';
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
   experimental: {
-    typedRoutes: false,
+    typedRoutes: true,
     mdxRs: true
   }
 };
