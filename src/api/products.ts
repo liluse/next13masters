@@ -16,9 +16,11 @@ export interface Rating {
 	count: number;
 }
 
-export const getProductsList = async () => {
+export const getProductsList = async (pageNumber: number) => {
+	const offset = (pageNumber - 1) * 20;
+
 	const res = await fetch(
-		"https://naszsklep-api.vercel.app/api/products",
+		`https://naszsklep-api.vercel.app/api/products?take=20&offset=${offset}`,
 	);
 
 	const productsResponse =
