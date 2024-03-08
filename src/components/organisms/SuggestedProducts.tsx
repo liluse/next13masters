@@ -9,5 +9,5 @@ export const SuggestedProductsList = async ({}) => {
 
 	await sleep(2000);
 
-	return <ProductList products={products.slice(-4)} />;
+	return <ProductList products={products.data.slice(-4)} />;
 };

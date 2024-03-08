@@ -1,11 +1,11 @@
-import { type ProductItemType } from "../types";
+import { type ProductListItemFragmentFragment } from "@/gql/graphql";
 import { formatMoney } from "@/utils";
 
 export const ProductShortDescription = ({
 	name,
 	price,
-	category,
-}: ProductItemType) => {
+	categories,
+}: ProductListItemFragmentFragment) => {
 	return (
 		<div className="mt-2 flex justify-between">
 			<div>
@@ -14,7 +14,8 @@ export const ProductShortDescription = ({
 				</h3>
 
 				<p className="text-sm text-gray-500">
-					<span className="sr-only">Kategoria: </span> {category}
+					<span className="sr-only">Kategoria: </span>{" "}
+					{categories[0]?.name || "Brak kategorii"}
 				</p>
 			</div>
 
