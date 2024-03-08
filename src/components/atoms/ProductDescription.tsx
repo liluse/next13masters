@@ -1,11 +1,14 @@
-import { type ProductItemType } from "../types";
 import { formatMoney } from "@/utils";
 
 export const ProductDescription = ({
 	name,
 	price,
 	category,
-}: ProductItemType) => {
+}: {
+	name: string;
+	price: number;
+	category: string;
+}) => {
 	return (
 		<div className="flex flex-col">
 			<h1 className="text-4xl font-semibold text-gray-700">{name}</h1>

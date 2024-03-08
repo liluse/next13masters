@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { type Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getProductById } from "@/api/products";
 import { SuggestedProductsList } from "@/components/organisms/SuggestedProducts";
 import { ProductPresentation } from "@/components/molecules/ProductPresentation";
@@ -13,6 +14,10 @@ export const generateMetadata = async ({
 }): Promise<Metadata> => {
 	const product = await getProductById(params.productId);
 
+	if (!product) {
+		notFound();
+	}
+
 	const title = `${product.name} - Sklep internetowy`;
 	const description = product.description;
 	return {
@@ -22,7 +27,10 @@ export const generateMetadata = async ({
 			title,
 			description,
 			images: [
-				{ url: product.coverImage.src, alt: product.coverImage.alt },
+				{
+					url: product.images[0]?.url || "",
+					alt: product.images[0]?.alt,
+				},
 			],
 		},
 	};
@@ -36,6 +44,10 @@ export default async function SingleProductPage({
 	};
 }) {
 	const product = await getProductById(params.productId);
+
+	if (!product) {
+		notFound();
+	}
 
 	return (
 		<>

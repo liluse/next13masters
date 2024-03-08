@@ -6,22 +6,27 @@ export const generateStaticParams = async () => {
 	];
 };
 
-import { getProductsList } from "@/api/products";
+import { notFound } from "next/navigation";
 import { Pagination } from "@/components/molecules/Pagination";
 import { ProductList } from "@/components/organisms/ProductsList";
+import { getProductsList } from "@/api/products";
 
-export default async function CategoryProductPage({
+export default async function ProductsPage({
 	params,
 }: {
 	params: {
 		pageNumber: string;
 	};
 }) {
-	const products = await getProductsList(Number(params.pageNumber));
+	const products = await getProductsList(params.pageNumber);
+
+	if (!products.data.length) {
+		notFound();
+	}
 
 	return (
 		<>
-			<ProductList products={products} />
+			<ProductList products={products.data} />
 			<Pagination />
 		</>
 	);

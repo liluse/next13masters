@@ -1,0 +1,5 @@
+query ProductGetDetails($id: ID!) {
+	product(id: $id) {
+		...ProductListItemFragment
+	}
+}
